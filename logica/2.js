@@ -12,6 +12,33 @@
       Salida: MOUREDEV
  */
 
-const t9Keyboard = value => {
-  return
-}
+const t9Keyboard = (value) => {
+  const t9KeyboardMapping = {
+    2: "ABC",
+    3: "DEF",
+    4: "GHI",
+    5: "JKL",
+    6: "MNO",
+    7: "PQRS",
+    8: "TUV",
+    9: "WXYZ",
+  };
+
+  const blockConverter = (block) => {
+    let result = "";
+    let prevNumber = null;
+
+    for (const number of block) {
+      if (number === prevNumber) continue;
+      const letters = t9KeyboardMapping[number] || "";
+      result += letters.charAt(block.length - 1);
+      prevNumber = number;
+    }
+    return result;
+  };
+
+  const blocks = value.split("-");
+  const result = blocks.map(blockConverter).join("");
+
+  return result;
+};
