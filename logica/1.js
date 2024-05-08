@@ -17,6 +17,24 @@
 // {car: 's', veces: 1}
 // {car: 'y', veces: 2}
 
-const contarCar = value => {
-  return
-}
+const contarCar = (value) => {
+  const frequency = {};
+
+  const cleanedString = value.normalize("NFD").replace(/\s/g, '').toLowerCase();
+
+  for (const char of cleanedString) {
+    if (/[a-z0-9i]/.test(char)) {
+      frequency[char] = (frequency[char] || 0) + 1;
+    }
+  }
+
+  const sortedFrequency = Object.entries(frequency)
+    .sort((a, b) => a[0].localeCompare(b[0]));
+
+  const result = sortedFrequency.map(([char, count]) => ({
+    car: char,
+    veces: count
+  }));
+  
+  return result;
+};
