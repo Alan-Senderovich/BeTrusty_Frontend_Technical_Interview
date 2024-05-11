@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --primary-blue: #0f172a;
+    --light-blue: #33eaff;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: var(--primary-blue);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* GENERAL STYLES start */
+.max-width {
+  @apply max-w-[1440px] mx-auto;
+}
+
+.flex-center {
+  @apply flex items-center justify-center;
+}
+
+.flex-between {
+  @apply flex justify-between items-center;
+}
+
+.padding-x {
+  @apply md:px-16 px-6;
+}
+
+.margin-x {
+  @apply md:mx-16 mx-4;
+}
+
+.custom-btn {
+  @apply flex-center flex-row relative py-2 px-3 outline-none;
+}
+
+/* GENERAL STYLES end */
+
+/* APARTMENT DETAIL VIEW start */
+.apartmentView__container {
+  @apply max-w-[1440px] mx-auto;
+}
+
+.apartmentView__headerSection {
+  @apply flex justify-between mx-6 lg:mx-3 h-[60px] items-center;
+}
+
+.apartmentView__imagesSection {
+  @apply flex w-[100%] h-52 xl:h-[422px] bg-blue-600;
+}
+
+.apartmentView__detailsSection {
+  @apply flex flex-col lg:flex-row-reverse items-center lg:items-baseline mx-6 lg:mx-0 my-6 lg:gap-12;
+}
+
+.apartmentView__reservation-wrapper {
+  @apply flex flex-col w-full max-w-[340px] min-w-[320px] lg:w-[26%] gap-6;
+}
+/* APARTMENT DETAIL VIEW end */
+
+/* RESERVATION CARD start */
+.reservationCard__container {
+  @apply border-2 border-gray rounded-[10px];
+}
+
+.reservationCard__row {
+  @apply flex border-b-2 border-gray last:border-b-0 px-6;
+}
+
+.reservationCard__row div {
+  @apply py-4;
+}
+/* RESERVATION CARD end */
+
+/* APARTMENT DETAIL start */
+.apartmentDetails__container {
+  @apply pt-8 pb-0 flex-1
+}
+/* APARTMENT DETAIL end */
