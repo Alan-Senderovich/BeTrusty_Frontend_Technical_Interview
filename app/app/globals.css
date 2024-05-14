@@ -52,7 +52,21 @@ body {
   @apply flex-center flex-row relative py-2 px-3 outline-none;
 }
 
+.modal__open {
+  @apply opacity-100 visible;
+}
+
+.modal__close {
+  @apply opacity-0 hidden;
+}
+
 /* GENERAL STYLES end */
+
+/* NAVBAR STYLES start */
+.navbar__item {
+  @apply h-max md:flex md:h-[40px] md:mb-2 hover:border-gray hover:border-b-[1px] transition duration-300;
+}
+/* NAVBAR STYLES end */
 
 /* APARTMENT DETAIL VIEW start */
 .apartmentView__container {
@@ -64,11 +78,11 @@ body {
 }
 
 .apartmentView__imagesSection {
-  @apply flex w-[100%] h-52 xl:h-[422px] bg-blue-600;
+  @apply flex w-[100%] h-56 sm:h-auto md:h-[422px];
 }
 
 .apartmentView__detailsSection {
-  @apply flex flex-col lg:flex-row-reverse items-center lg:items-baseline mx-6 lg:mx-0 my-6 lg:gap-12;
+  @apply flex flex-col md:flex-row-reverse items-center md:items-baseline mx-6 md:mx-0 my-6 md:gap-12;
 }
 
 .apartmentView__reservation-wrapper {
@@ -82,16 +96,30 @@ body {
 }
 
 .reservationCard__row {
-  @apply flex border-b-2 border-gray last:border-b-0 px-6;
+  @apply flex border-b-2 border-gray last:border-b-0 px-6 relative;
 }
 
 .reservationCard__row div {
-  @apply py-4;
+  /* @apply py-4; */
 }
 /* RESERVATION CARD end */
 
 /* APARTMENT DETAIL start */
 .apartmentDetails__container {
-  @apply pt-8 pb-0 flex-1
+  @apply pt-8 pb-0 flex-1;
 }
 /* APARTMENT DETAIL end */
+
+/* DATE RANGE PICKER start */
+.rdrDateRangePickerWrapper {
+  @apply absolute top-[100px] left-0 md:left-[-318px] z-50;
+}
+
+.rdrDefinedRangesWrapper, .rdrDateDisplayWrapper {
+  @apply hidden;
+}
+
+.rdrCalendarWrapper.rdrDateRangeWrapper {
+  @apply p-0;
+}
+/* DATE RANGE PICKER end */

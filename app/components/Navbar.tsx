@@ -1,3 +1,4 @@
+import { navbarItems } from "@/constants";
 import Link from "next/link";
 import { FaRegBell, FaRegRectangleList } from "react-icons/fa6";
 import {
@@ -9,37 +10,44 @@ import {
 import { LiaIdCardSolid } from "react-icons/lia";
 import { PiSquaresFour } from "react-icons/pi";
 
+export const icons = {
+  Home: IoHomeOutline,
+  Profile: LiaIdCardSolid,
+  Performance: IoSpeedometerOutline,
+  Extensions: PiSquaresFour,
+  Key: IoKeyOutline,
+  Notifications: FaRegBell,
+};
+
 const Navbar = () => {
   return (
-    <article className="flex bg-black w-full justify-center items-center py-8 gap-6 lg:gap-0 lg:flex-col lg:justify-between lg:w-[90px] lg:py-6">
-      <div className="flex gap-6 lg:gap-0 lg:flex-col">
+    <article className="flex bg-black w-full justify-center items-center py-8 gap-6 md:gap-0 md:flex-col md:justify-between md:w-[90px] md:py-6">
+      <div className="flex gap-6 md:gap-0 md:flex-col">
         <Link
           href="/"
-          className="hidden lg:flex h-max border-b-[1px] border-gray pb-1 mb-4"
+          className="hidden md:flex md:mb-4 h-max border-b-[1px] border-gray pb-1 mb-4"
         >
           <FaRegRectangleList size={30} />
         </Link>
-        <Link href="/" className="lg:flex h-max lg:mt-8 lg:mb-4">
-          <IoHomeOutline size={30} />
-        </Link>
-        <Link href="/" className="hidden lg:flex h-max lg:mb-4">
-          <LiaIdCardSolid size={30} />
-        </Link>
-        <Link href="/" className="lg:flex h-max lg:mb-4">
-          <IoSpeedometerOutline size={30} />
-        </Link>
-        <Link href="/" className="lg:flex h-max lg:mb-4">
-          <PiSquaresFour size={30} />
-        </Link>
-        <Link href="/" className="hidden lg:flex h-max lg:mb-4">
-          <IoKeyOutline size={30} />
-        </Link>
-        <Link href="/" className="lg:flex h-max lg:mb-4">
-          <FaRegBell size={30} />
-        </Link>
+        <div className="flex gap-6 md:flex-col md:pt-6 md:gap-0">
+          {navbarItems.map((item, index) => {
+            const Icon = icons[item.name];
+            const isHiddenMobile =
+              item.name === "Key" || item.name === "Profile";
+            return (
+              <Link
+                href={item.url}
+                key={index}
+                className={`navbar__item ${isHiddenMobile && "hidden"}`}
+              >
+                {Icon && <Icon size={30} />}
+              </Link>
+            );
+          })}
+        </div>
       </div>
       <div>
-        <Link href="/settings">
+        <Link href="/settings" className="navbar__item">
           <IoSettingsOutline size={30} />
         </Link>
       </div>

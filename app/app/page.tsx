@@ -1,8 +1,9 @@
 import { ApartmentDetailView } from "@/components";
+// import ApartmentDetailView from "../components/ApartmentDetailView"
 
 export default function Home() {
   return (
-    <main className="lg:px-12 min-h-screen">
+    <main className="md:px-6 lg:px-12 min-h-screen">
       <ApartmentDetailView />
     </main>
   );

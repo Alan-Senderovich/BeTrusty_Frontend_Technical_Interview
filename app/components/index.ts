@@ -4,6 +4,8 @@ import ApartmentDetailView from "./ApartmentDetailView";
 import ReservationCard from "./ReservationCard";
 import ApartmentDetails from "./ApartmentDetails";
 import ApartmentDetailsItem from "./ApartmentDetailsItem";
+import Gallery from "./Gallery";
+import Carousel from "./Carousel";
 
 export {
   Header,
@@ -12,4 +14,6 @@ export {
   ReservationCard,
   ApartmentDetails,
   ApartmentDetailsItem,
+  Gallery,
+  Carousel,
 };

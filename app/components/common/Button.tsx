@@ -7,21 +7,26 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: string;
 }
 
+interface ColorVariants {
+  [key: string]: string;
+}
+
 const Button = ({
   children,
   containerStyles,
   handleClick,
   variant,
 }: ButtonProps) => {
-  const colorVariants = {
+  const colorVariants: ColorVariants = {
     default:
       "bg-light-blue w-full rounded-3xl text-primary-blue font-semibold text-lg",
+    secondary: "bg-white w-full rounded-lg text-primary-blue font-semibold text-md hover:bg-slate-400 transition ease-in-out duration-300",
   };
 
-  const customStyles = variant === "default" ? colorVariants.default : "";
+  const customStyles = variant ? colorVariants[variant] : "";
 
   return (
-    <button className={`custom-btn ${customStyles} ${containerStyles}`}>
+    <button onClick={handleClick} className={`custom-btn ${customStyles} ${containerStyles}`}>
       {children}
     </button>
   );

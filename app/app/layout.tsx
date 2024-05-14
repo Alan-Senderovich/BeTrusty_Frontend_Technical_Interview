@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Header, Navbar } from "@/components";
+import { AppProvider } from "@/redux/providers";
 
 export const metadata: Metadata = {
   title: "BeTrusty Challenge",
@@ -15,12 +16,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="relative">
-        <div className="flex flex-col-reverse lg:flex-row">
-          <Navbar />
-          <div className="w-full">
-            <Header />
-            {children}
-          </div>
+        <div className="flex flex-col-reverse md:flex-row">
+          <AppProvider>
+            <Navbar />
+            <div className="w-full">
+              <Header />
+              {children}
+            </div>
+          </AppProvider>
         </div>
       </body>
     </html>
