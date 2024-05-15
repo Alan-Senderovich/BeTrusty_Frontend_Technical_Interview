@@ -1,15 +1,14 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { IApartmentState } from "./models";
 import { RootState } from "@/redux/store";
-import { fetchApartmentData } from "@/redux/services";
-import { IApartment } from "@/types";
+import { selectedApartmentMock } from "@/__mocks__";
 
 export const initialState: IApartmentState = {
   listOfApartments: [],
   selectedStartDate: null,
   selectedEndDate: null,
-  selectedApartment: null,
   status: "idle",
+  selectedApartment: selectedApartmentMock
 };
 
 export const apartmentSlice = createSlice({
@@ -35,23 +34,6 @@ export const apartmentSlice = createSlice({
       state.selectedStartDate = action.payload.startDateFormatted;
       state.selectedEndDate = action.payload.endDateFormatted;
     },
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchApartmentData.pending, (state) => {
-        state.status = "loading";
-      })
-      .addCase(
-        fetchApartmentData.fulfilled,
-        (state, action: PayloadAction<IApartment>) => {
-          state.status = "success";
-          state.selectedApartment = action.payload;
-        }
-      )
-      .addCase(fetchApartmentData.rejected, (state, action) => {
-        state.status = "failed";
-        console.error("Error fetching apartment data:", action.error);
-      });
   },
 });
 
