@@ -47,7 +47,7 @@ const Navbar = () => {
         </div>
       </div>
       <div>
-        <Link href="/settings" className="navbar__item">
+        <Link href="/configuracion" className="navbar__item" data-testid="settings-item-btn">
           <IoSettingsOutline size={30} />
         </Link>
       </div>
