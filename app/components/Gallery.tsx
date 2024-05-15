@@ -46,6 +46,7 @@ const Gallery = ({ images }: GalleryProps) => {
           height={IMAGE_HEIGHT}
           alt="Main-Photo"
           className="w-full h-full object-cover"
+          priority
         />
       </div>
 
