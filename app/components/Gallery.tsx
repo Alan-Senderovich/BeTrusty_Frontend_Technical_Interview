@@ -14,7 +14,6 @@ interface GalleryProps {
 const IMAGE_WIDTH = 400;
 const IMAGE_HEIGHT = 300;
 
-
 const Gallery = ({ images }: GalleryProps) => {
   const [isRoomsDetailsModalOpen, setIsRoomsDetailsModalOpen] =
     useState<boolean>(false);
@@ -52,12 +51,14 @@ const Gallery = ({ images }: GalleryProps) => {
         />
       </div>
 
-      {/* Cuadrado azul con texto */}
       <div
         onClick={onOpenRoomsDetailsModal}
+        data-testid="view-rooms-details"
         className="col-span-1 col-start-4 row-span-1 bg-primary-blue-100 flex items-center justify-center cursor-pointer hover:bg-secondary-blue transition ease-in-out duration-300"
       >
-        <p className="text-white md:text-sm lg:text-base text-center">Ver los detalles de las habitaciones</p>
+        <p className="text-white md:text-sm lg:text-base text-center px-4 xl:px-12">
+          Ver los detalles de las habitaciones
+        </p>
       </div>
 
       <div className="col-span-1 col-start-3 row-start-1 row-span-1">
@@ -86,9 +87,9 @@ const Gallery = ({ images }: GalleryProps) => {
 
       <div className="absolute bottom-0 right-0 md:max-w-[135px] lg:max-w-full md:mr-2 md:mb-2 lg:mr-3 lg:mb-3 xl:mr-4 xl:mb-4 md:text-xs xl:text-base">
         <Button
-          className=""
           variant="secondary"
           handleClick={onOpenViewAllPhotosModal}
+          data-testid="view-all-images"
         >
           <div className="flex gap-2 items-center">
             <BsFillGrid3X3GapFill />

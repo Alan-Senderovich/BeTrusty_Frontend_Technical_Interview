@@ -21,7 +21,7 @@ const Carousel = ({ images }: CarouselProps) => {
     setCurr((curr) => (images && curr === images.length - 1 ? 0 : curr + 1));
 
   return (
-    <article className="flex relative overflow-hidden">
+    <article className="flex relative overflow-hidden" data-testid="carousel-container">
       <div
         className="flex w-full transition-transform ease-out duration-500"
         style={{ transform: `translateX(-${curr * 100}%)` }}
