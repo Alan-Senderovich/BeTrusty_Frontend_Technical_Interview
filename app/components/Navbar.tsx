@@ -1,5 +1,5 @@
-import { navbarItems } from "@/constants";
 import Link from "next/link";
+import { navbarItems } from "@/constants";
 import { FaRegBell, FaRegRectangleList } from "react-icons/fa6";
 import {
   IoHomeOutline,
@@ -21,11 +21,11 @@ export const icons = {
 
 const Navbar = () => {
   return (
-    <article className="flex bg-black w-full justify-center items-center py-8 gap-6 md:gap-0 md:flex-col md:justify-between md:w-[90px] md:py-6">
-      <div className="flex gap-6 md:gap-0 md:flex-col">
+    <article className="navbar__container">
+      <div className="flex gap-6 md:flex-col md:gap-0">
         <Link
           href="/"
-          className="hidden md:flex md:mb-4 h-max border-b-[1px] border-gray pb-1 mb-4"
+          className="hidden h-max border-b-[1px] border-gray pb-1 mb-4 md:flex md:mb-4"
         >
           <FaRegRectangleList size={30} />
         </Link>
@@ -47,7 +47,11 @@ const Navbar = () => {
         </div>
       </div>
       <div>
-        <Link href="/configuracion" className="navbar__item" data-testid="settings-item-btn">
+        <Link
+          href="/configuracion"
+          className="navbar__item"
+          data-testid="settings-item-btn"
+        >
           <IoSettingsOutline size={30} />
         </Link>
       </div>

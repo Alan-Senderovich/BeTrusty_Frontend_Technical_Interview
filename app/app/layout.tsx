@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import "./globals.css";
 import { Header, Navbar } from "@/components";
 import { AppProvider } from "@/redux/providers";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "BeTrusty Challenge",

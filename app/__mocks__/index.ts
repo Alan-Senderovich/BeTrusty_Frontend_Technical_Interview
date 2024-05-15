@@ -1,6 +1,6 @@
 import { IApartment } from "@/types";
 
-export const images = [
+export const images: string[] = [
   "https://i.postimg.cc/tTyWQ09Q/Osofsky-Oct19-5.webp",
   "https://i.postimg.cc/50v69YHT/image-2.jpg",
   "https://i.postimg.cc/Pq57kY7f/image-3.jpg",

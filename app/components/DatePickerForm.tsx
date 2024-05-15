@@ -11,6 +11,9 @@ import "react-date-range/dist/theme/default.css"; // theme css file
 const DatePickerForm = () => {
   const dispatch = useAppDispatch();
   const [openDate, setOpenDate] = useState(false);
+  const [selectedEndDate, setSelectedEndDate] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const datePickerRef = useRef<HTMLDivElement>(null);
   const [date, setDate] = useState({
     startDate: new Date(),
     endDate: new Date(),
@@ -19,13 +22,8 @@ const DatePickerForm = () => {
   const [selectedStartDate, setSelectedStartDate] = useState<string | null>(
     null
   );
-  const [selectedEndDate, setSelectedEndDate] = useState<string | null>(null);
-  const [isMobile, setIsMobile] = useState(false);
-  const datePickerRef = useRef<HTMLDivElement>(null);
 
-  // TODO ver el any
   const handleChange = (ranges: any) => {
-    const { startDate, endDate } = ranges.selection;
     const startDateFormatted = format(ranges.selection.startDate, "MM/dd/yyyy");
     const endDateFormatted = format(ranges.selection.endDate, "MM/dd/yyyy");
     setDate(ranges.selection);
@@ -43,7 +41,7 @@ const DatePickerForm = () => {
     window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener("resize", handleResize); // Limpiar el event listener al desmontar el componente
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -56,9 +54,7 @@ const DatePickerForm = () => {
         setOpenDate(false);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
-
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
@@ -67,6 +63,7 @@ const DatePickerForm = () => {
   const handleClick = () => {
     setOpenDate(!openDate);
   };
+
   return (
     <div className="pb-0 flex w-full" ref={datePickerRef}>
       <div
@@ -78,7 +75,10 @@ const DatePickerForm = () => {
         <p>{selectedStartDate ? selectedStartDate : "dd/mm/aaaa"}</p>
       </div>
       <div className="w-[1px] bg-gray"></div>
-      <div className="w-[50%] flex-col text-center pl-6 cursor-pointer py-4" onClick={handleClick}>
+      <div
+        className="w-[50%] flex-col text-center pl-6 cursor-pointer py-4"
+        onClick={handleClick}
+      >
         <p className="font-semibold">CHECK-OUT</p>
         <p>{selectedEndDate ? selectedEndDate : "dd/mm/aaaa"}</p>
       </div>

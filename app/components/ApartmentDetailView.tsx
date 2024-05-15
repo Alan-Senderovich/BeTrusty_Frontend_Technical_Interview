@@ -1,8 +1,10 @@
 "use client";
 
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { FaPencilAlt } from "react-icons/fa";
-import { RiShareForwardFill } from "react-icons/ri";
+import { useAppSelector } from "@/redux/hooks";
+import {
+  getSelectedApartmentState,
+  getStatusState,
+} from "@/redux/features/apartmentSlice";
 import {
   ReservationCard,
   ApartmentDetails,
@@ -10,20 +12,15 @@ import {
   Carousel,
 } from "@/components";
 import { Button } from "@/components/common";
+import { Spinner } from "@/components/common";
 import { IApartmentDetails, IOwner } from "@/types";
-import {
-  getSelectedApartmentState,
-  getStatusState,
-} from "@/redux/features/apartmentSlice";
-import Spinner from "./common/Spinner";
-import { useEffect } from "react";
+import { FaPencilAlt } from "react-icons/fa";
+import { RiShareForwardFill } from "react-icons/ri";
 
 const ApartmentDetailView = () => {
-  const dispatch = useAppDispatch();
   const selectedApartment = useAppSelector(getSelectedApartmentState);
   const status = useAppSelector(getStatusState);
   const isLoading = status === "loading";
-  const id = "1";
 
   const details = selectedApartment?.apartment.details;
   const owner = selectedApartment?.owner;
@@ -40,19 +37,19 @@ const ApartmentDetailView = () => {
           <section className="apartmentView__headerSection">
             <p className="font-semibold text-xl">{selectedApartment && name}</p>
             <div className="flex-center gap-3">
-              <div className="rounded-full overflow-hidden h-[30px] w-[30px] bg-secondary-blue flex items-center justify-center cursor-pointer">
+              <div className="topIcons__container bg-secondary-blue hover:bg-primary-blue">
                 <FaPencilAlt size={20} color="#33eaff" />
               </div>
-              <div className="rounded-full overflow-hidden h-[30px] w-[30px] bg-light-blue flex items-center justify-center cursor-pointer">
+              <div className="topIcons__container bg-light-blue hover:bg-secondary-blue">
                 <RiShareForwardFill size={20} color="#0f172a" />
               </div>
             </div>
           </section>
           <section className="apartmentView__imagesSection">
             <div className="flex md:hidden">
-              <Carousel images={selectedApartment && images} />
+              {images && <Carousel images={images} />}
             </div>
-            <Gallery images={selectedApartment && images} />
+            {images && <Gallery images={images} />}
           </section>
           <section className="apartmentView__detailsSection">
             <div className="apartmentView__reservation-wrapper">

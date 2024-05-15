@@ -6,6 +6,8 @@ import ApartmentDetails from "./ApartmentDetails";
 import ApartmentDetailsItem from "./ApartmentDetailsItem";
 import Gallery from "./Gallery";
 import Carousel from "./Carousel";
+import DatePickerForm from "./DatePickerForm";
+import RoomsDetails from "./RoomsDetails";
 
 export {
   Header,
@@ -16,4 +18,6 @@ export {
   ApartmentDetailsItem,
   Gallery,
   Carousel,
+  DatePickerForm,
+  RoomsDetails,
 };
