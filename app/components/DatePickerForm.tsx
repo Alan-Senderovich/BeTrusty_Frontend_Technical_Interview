@@ -2,11 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 import { DateRangePicker, Range } from "react-date-range";
-import "react-date-range/dist/styles.css"; // main style file
-import "react-date-range/dist/theme/default.css"; // theme css file
 import { format } from "date-fns";
 import { useAppDispatch } from "@/redux/hooks";
 import { updateSelectedDates } from "@/redux/features/apartmentSlice";
+import "react-date-range/dist/styles.css"; // main style file
+import "react-date-range/dist/theme/default.css"; // theme css file
 
 const DatePickerForm = () => {
   const dispatch = useAppDispatch();
@@ -72,6 +72,7 @@ const DatePickerForm = () => {
       <div
         className="w-[50%] flex-col text-center pr-6 cursor-pointer py-4"
         onClick={handleClick}
+        data-testid="checkin-btn"
       >
         <p className="font-semibold">CHECK-IN</p>
         <p>{selectedStartDate ? selectedStartDate : "dd/mm/aaaa"}</p>
