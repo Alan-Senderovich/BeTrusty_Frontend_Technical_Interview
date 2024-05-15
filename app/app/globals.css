@@ -21,12 +21,6 @@ body {
   background: var(--primary-blue);
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
-
 /* GENERAL STYLES start */
 .max-width {
   @apply max-w-[1440px] mx-auto;
@@ -38,14 +32,6 @@ body {
 
 .flex-between {
   @apply flex justify-between items-center;
-}
-
-.padding-x {
-  @apply md:px-16 px-6;
-}
-
-.margin-x {
-  @apply md:mx-16 mx-4;
 }
 
 .custom-btn {
@@ -60,11 +46,37 @@ body {
   @apply opacity-0 hidden;
 }
 
+.modal__wrapper {
+  @apply w-[600px] min-h-[200px] h-auto flex-wrap justify-center m-auto bg-white relative text-black rounded-lg overflow-y-auto overflow-x-hidden;
+}
+
+.btn__default {
+  @apply w-full bg-light-blue rounded-3xl text-primary-blue font-semibold text-lg transition ease-in-out duration-300 hover:text-light-blue hover:bg-secondary-blue;
+}
+
+.btn__secondary {
+  @apply bg-white w-full rounded-lg text-primary-blue font-semibold text-base transition ease-in-out duration-300 hover:bg-slate-400;
+}
+
+.spinner {
+  @apply inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white;
+}
+
 /* GENERAL STYLES end */
 
+/* HEADER STYLES start */
+.avatar__container {
+  @apply h-auto w-auto rounded-full overflow-hidden border-2 border-light-blue cursor-pointer;
+}
+/* HEADER STYLES end */
+
 /* NAVBAR STYLES start */
+.navbar__container {
+  @apply flex-center bg-black w-full py-8 gap-6 md:gap-0 md:flex-col md:justify-between md:w-[90px] md:py-6;
+}
+
 .navbar__item {
-  @apply h-max md:flex md:h-[40px] md:mb-2 hover:border-gray hover:border-b-[1px] transition duration-300;
+  @apply h-max transition duration-300 md:flex md:h-[40px] md:mb-2 hover:border-gray hover:border-b-[1px];
 }
 /* NAVBAR STYLES end */
 
@@ -74,7 +86,7 @@ body {
 }
 
 .apartmentView__headerSection {
-  @apply flex justify-between mx-6 lg:mx-3 h-[60px] items-center;
+  @apply flex-between mx-6 h-[60px] lg:mx-3;
 }
 
 .apartmentView__imagesSection {
@@ -82,11 +94,15 @@ body {
 }
 
 .apartmentView__detailsSection {
-  @apply flex flex-col md:flex-row-reverse items-center md:items-baseline mx-6 md:mx-0 my-6 md:gap-12;
+  @apply flex flex-col items-center mx-6 my-6 md:flex-row-reverse md:items-baseline md:mx-0 md:gap-12;
 }
 
 .apartmentView__reservation-wrapper {
-  @apply flex flex-col w-full max-w-[340px] min-w-[320px] lg:w-[26%] gap-6;
+  @apply flex flex-col w-full max-w-[340px] min-w-[320px] gap-6 lg:w-[26%];
+}
+
+.topIcons__container {
+  @apply flex-center rounded-full overflow-hidden h-[30px] w-[30px] cursor-pointer;
 }
 /* APARTMENT DETAIL VIEW end */
 
@@ -96,26 +112,23 @@ body {
 }
 
 .reservationCard__row {
-  @apply flex border-b-2 border-gray last:border-b-0 px-6 relative;
-}
-
-.reservationCard__row div {
-  /* @apply py-4; */
+  @apply flex border-b-2 border-gray px-6 relative last:border-b-0;
 }
 /* RESERVATION CARD end */
 
 /* APARTMENT DETAIL start */
 .apartmentDetails__container {
-  @apply pt-8 pb-0 flex-1;
+  @apply flex-1 pt-8 pb-0;
 }
 /* APARTMENT DETAIL end */
 
 /* DATE RANGE PICKER start */
 .rdrDateRangePickerWrapper {
-  @apply absolute top-[100px] left-0 md:left-[-318px] z-50;
+  @apply absolute top-[100px] left-0 z-50 md:left-[-318px];
 }
 
-.rdrDefinedRangesWrapper, .rdrDateDisplayWrapper {
+.rdrDefinedRangesWrapper,
+.rdrDateDisplayWrapper {
   @apply hidden;
 }
 
@@ -123,3 +136,17 @@ body {
   @apply p-0;
 }
 /* DATE RANGE PICKER end */
+
+/* GALLERY start */
+.viewRoomsDetail__container {
+  @apply flex-center col-span-1 col-start-4 row-span-1 bg-primary-blue-100 cursor-pointer transition ease-in-out duration-300 hover:bg-secondary-blue;
+}
+
+.viewRoomsDetail__container p {
+  @apply text-white text-center px-4 md:text-sm lg:text-base xl:px-12;
+}
+
+.showAllPhotos__container {
+  @apply absolute bottom-0 right-0 md:max-w-[135px] md:text-xs md:mr-2 md:mb-2 lg:max-w-full lg:mr-3 lg:mb-3 xl:text-base xl:mr-4 xl:mb-4;
+}
+/* GALLERY end */
