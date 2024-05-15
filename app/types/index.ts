@@ -2,12 +2,12 @@ import { icons } from "@/components/Navbar";
 
 export type TFetchStatus = 'idle' | 'loading' | 'failed' | 'success';
 
-export type NavbarItem = {
+export type INavbarItem = {
   name: keyof typeof icons;
   url: string;
 };
 
-export interface ApartmentDetailsData {
+export interface IApartmentDetailsData {
   address: string;
   type: string;
   roomsQuantity: number;
@@ -17,7 +17,7 @@ export interface ApartmentDetailsData {
 }
 
 export interface IApartmentDetails {
-  items: ApartmentDetailsData;
+  items: IApartmentDetailsData;
   description: string;
 }
 
