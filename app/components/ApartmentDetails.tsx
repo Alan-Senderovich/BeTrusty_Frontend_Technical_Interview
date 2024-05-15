@@ -1,21 +1,25 @@
-import { IApartmentDetails, ApartmentDetailsData, IOwner } from "@/types";
-import Image from "next/image";
+
+import React from "react";
+import { IApartmentDetails, IOwner } from "@/types";
 import { FaBed } from "react-icons/fa";
-import { ApartmentDetailsItem } from "@/components";
+import { IoIosWifi, IoMdCar } from "react-icons/io";
 import { FaLocationDot } from "react-icons/fa6";
 import { TiHome } from "react-icons/ti";
 import { MdBathtub } from "react-icons/md";
-import { IoIosWifi, IoMdCar } from "react-icons/io";
+import ApartmentDetailsItem from "./ApartmentDetailsItem";
+import OwnerDetails from "./OwnerDetails";
+
 interface ApartmentDetailsProps {
   details: IApartmentDetails;
   owner: IOwner;
 }
 
 const ApartmentDetails = ({ details, owner }: ApartmentDetailsProps) => {
+  
   const renderDetails = () => {
     if (!details || !owner) return null;
-    const { items, description } = details;
-    const {name} = owner;
+    const { items } = details;
+    const { name } = owner;
     const detailsMap = [
       {
         icon: <FaLocationDot size={30} color="#33eaff" />,
@@ -53,20 +57,14 @@ const ApartmentDetails = ({ details, owner }: ApartmentDetailsProps) => {
       });
     }
 
-    // return detailsMap.map((detail, index) => (
-    //   <ApartmentDetailsItem key={index}>
-    //     {detail.icon}
-    //     <p>{detail.text}</p>
-    //   </ApartmentDetailsItem>
-    // ));
-
     return (
       <>
         {detailsMap.map((detail, index) => (
-          <ApartmentDetailsItem key={index}>
-            {detail.icon}
-            <p>{detail.text}</p>
-          </ApartmentDetailsItem>
+          <ApartmentDetailsItem
+            key={index}
+            icon={detail.icon}
+            text={detail.text}
+          />
         ))}
         {details.description && (
           <div className="py-6 flex flex-col gap-3">
@@ -74,47 +72,13 @@ const ApartmentDetails = ({ details, owner }: ApartmentDetailsProps) => {
             <p className="w-full lg:w-[75%]">{details.description}</p>
           </div>
         )}
-        {name && (
-          <div className="py-6 flex flex-col gap-3">
-            <h3 className="text-xl font-semibold">Propietario</h3>
-            <div className="flex items-center gap-4">
-              <div className="rounded-full overflow-hidden h-auto w-auto">
-                <Image
-                  alt="avatar"
-                  src="/profile.webp"
-                  width={50}
-                  height={50}
-                />
-              </div>
-              <p className="w-full lg:w-[75%]">{name}</p>
-            </div>
-          </div>
-        )}
+        {name && <OwnerDetails name={name} />}
       </>
     );
   };
 
   return (
-    <article className="apartmentDetails__container">
-      {renderDetails()}
-      {/* {details.description && (
-        <div className="py-6 flex flex-col gap-3">
-          <h3 className="text-xl font-semibold">Descripción</h3>
-          <p className="w-full lg:w-[75%]">{details.description}</p>
-        </div>
-      )} */}
-      {/* {owner.name && (
-        <div className="py-6 flex flex-col gap-3">
-          <h3 className="text-xl font-semibold">Propietario</h3>
-          <div className="flex items-center gap-4">
-            <div className="rounded-full overflow-hidden h-auto w-auto">
-              <Image alt="avatar" src="/profile.webp" width={50} height={50} />
-            </div>
-            <p className="w-full lg:w-[75%]">{owner.name}</p>
-          </div>
-        </div>
-      )} */}
-    </article>
+    <article className="apartmentDetails__container">{renderDetails()}</article>
   );
 };
 

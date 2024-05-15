@@ -15,8 +15,8 @@ import {
   getSelectedApartmentState,
   getStatusState,
 } from "@/redux/features/apartmentSlice";
+import Spinner from "./common/Spinner";
 import { useEffect } from "react";
-import { fetchApartmentData } from "@/redux/services";
 
 const ApartmentDetailView = () => {
   const dispatch = useAppDispatch();
@@ -24,12 +24,6 @@ const ApartmentDetailView = () => {
   const status = useAppSelector(getStatusState);
   const isLoading = status === "loading";
   const id = "1";
-
-  console.log("selectedddddddd", selectedApartment);
-
-  useEffect(() => {
-    dispatch(fetchApartmentData(id));
-  }, [id, dispatch]);
 
   const details = selectedApartment?.apartment.details;
   const owner = selectedApartment?.owner;
@@ -40,11 +34,11 @@ const ApartmentDetailView = () => {
   return (
     <>
       {isLoading ? (
-        <div>loading</div>
+        <Spinner />
       ) : (
         <article className="apartmentView__container">
           <section className="apartmentView__headerSection">
-            <h3>{selectedApartment && name}</h3>
+            <p className="font-semibold text-xl">{selectedApartment && name}</p>
             <div className="flex-center gap-3">
               <div className="rounded-full overflow-hidden h-[30px] w-[30px] bg-secondary-blue flex items-center justify-center cursor-pointer">
                 <FaPencilAlt size={20} color="#33eaff" />

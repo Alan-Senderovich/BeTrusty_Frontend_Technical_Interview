@@ -1,11 +1,15 @@
-import React from "react";
-
 interface ApartmentDetailsItemProps {
-  children: React.ReactNode;
+  icon: React.ReactNode;
+  text: string;
 }
 
-const ApartmentDetailsItem = ({ children }: ApartmentDetailsItemProps) => {
-  return <li className="list-none flex gap-4 py-2 items-center">{children}</li>;
+const ApartmentDetailsItem = ({ icon, text }: ApartmentDetailsItemProps) => {
+  return (
+    <div className="flex items-center gap-4 pb-4">
+      <div className="icon">{icon}</div>
+      <p className="text">{text}</p>
+    </div>
+  );
 };
 
 export default ApartmentDetailsItem;
