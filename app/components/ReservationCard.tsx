@@ -1,15 +1,15 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { FaPencilAlt } from "react-icons/fa";
-import { DatePickerForm } from "@/components/common";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { useEffect, useState } from "react";
 import {
   getSelectedEndDateState,
   getSelectedStartDateState,
   updateValuePerNight,
 } from "@/redux/features/apartmentSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { DatePickerForm } from "@/components";
 import { formatRangeDate } from "@/utils/dateFormat";
+import { FaPencilAlt } from "react-icons/fa";
 
 interface ReservationCardProps {
   pricePerNight: number | null | undefined;
@@ -24,12 +24,9 @@ const ReservationCard = ({ pricePerNight }: ReservationCardProps) => {
   const [reserverdDays, setReservedDays] = useState<number>(0);
   const totalIncome = newPrice * reserverdDays;
 
-  console.log("startDate", selectedStartDate);
-  console.log("EndDate", selectedEndDate);
-
   useEffect(() => {
     if (selectedEndDate && selectedStartDate) {
-      const reservedDays = formatRangeDate(selectedStartDate, selectedEndDate)
+      const reservedDays = formatRangeDate(selectedStartDate, selectedEndDate);
       setReservedDays(reservedDays);
     }
   }, [selectedStartDate, selectedEndDate]);
@@ -64,14 +61,14 @@ const ReservationCard = ({ pricePerNight }: ReservationCardProps) => {
             <p>Precio por habitación</p>
           </div>
         )}
-        <div>
+        <div className="py-4">
           {isEditingPrice ? (
             <button onClick={handleSavePrice}>Guardar</button>
           ) : (
             <FaPencilAlt
               size={20}
               color="#33eaff"
-              className="cursor-pointer text-red-500"
+              className="cursor-pointer transition duration-300 hover:scale-125"
               onClick={handleEditPrice}
             />
           )}
