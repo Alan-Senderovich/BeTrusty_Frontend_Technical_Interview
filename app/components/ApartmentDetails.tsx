@@ -1,13 +1,10 @@
-
-import React from "react";
+import { ApartmentDetailsItem, OwnerDetails } from "@/components";
 import { IApartmentDetails, IOwner } from "@/types";
 import { FaBed } from "react-icons/fa";
 import { IoIosWifi, IoMdCar } from "react-icons/io";
 import { FaLocationDot } from "react-icons/fa6";
 import { TiHome } from "react-icons/ti";
 import { MdBathtub } from "react-icons/md";
-import ApartmentDetailsItem from "./ApartmentDetailsItem";
-import OwnerDetails from "./OwnerDetails";
 
 interface ApartmentDetailsProps {
   details: IApartmentDetails;
@@ -15,7 +12,6 @@ interface ApartmentDetailsProps {
 }
 
 const ApartmentDetails = ({ details, owner }: ApartmentDetailsProps) => {
-  
   const renderDetails = () => {
     if (!details || !owner) return null;
     const { items } = details;

@@ -1,6 +1,6 @@
 import { icons } from "@/components/Navbar";
 
-export type TFetchStatus = 'idle' | 'loading' | 'failed' | 'success';
+export type TFetchStatus = "idle" | "loading" | "failed" | "success";
 
 export type INavbarItem = {
   name: keyof typeof icons;
@@ -37,4 +37,3 @@ export interface IApartment {
   apartment: IApartmentInfo;
   owner: IOwner;
 }
-

@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
+import { useState } from "react";
+import { IMAGE_HEIGHT, IMAGE_WIDTH } from "@/constants";
 import {
   FaRegArrowAltCircleLeft,
   FaRegArrowAltCircleRight,
@@ -16,10 +17,14 @@ const Carousel = ({ images }: CarouselProps) => {
   if (!images || images.length === 0) return null;
 
   const prev = () =>
-    setCurrentIndex((curr) => (images && curr === 0 ? images.length - 1 : curr - 1));
+    setCurrentIndex((curr) =>
+      images && curr === 0 ? images.length - 1 : curr - 1
+    );
 
   const next = () =>
-    setCurrentIndex((curr) => (images && curr === images.length - 1 ? 0 : curr + 1));
+    setCurrentIndex((curr) =>
+      images && curr === images.length - 1 ? 0 : curr + 1
+    );
 
   return (
     <article
@@ -36,8 +41,8 @@ const Carousel = ({ images }: CarouselProps) => {
               key={i}
               src={image}
               alt={`${image} ${i}`}
-              width={400}
-              height={300}
+              width={IMAGE_WIDTH}
+              height={IMAGE_HEIGHT}
               className="min-w-full w-full object-cover"
             />
           ))}

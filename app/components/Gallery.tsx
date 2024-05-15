@@ -1,20 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
-// import Modal from "./common/Modal";
-// import { Button } from "./common";
-import { BsFillGrid3X3GapFill } from "react-icons/bs";
-// import Carousel from "./Carousel";
+import { useState } from "react";
 import { RoomsDetails, Carousel } from "@/components";
 import { Button, Modal } from "@/components/common";
+import { BsFillGrid3X3GapFill } from "react-icons/bs";
+import { IMAGE_HEIGHT, IMAGE_WIDTH } from "@/constants";
 
 interface GalleryProps {
   images: string[];
 }
-
-const IMAGE_WIDTH = 400;
-const IMAGE_HEIGHT = 300;
 
 const Gallery = ({ images }: GalleryProps) => {
   if (!images || images.length === 0) return null;

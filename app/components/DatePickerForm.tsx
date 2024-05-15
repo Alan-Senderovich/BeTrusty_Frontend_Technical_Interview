@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { DateRangePicker, Range } from "react-date-range";
+import { DateRangePicker } from "react-date-range";
 import { format } from "date-fns";
 import { useAppDispatch } from "@/redux/hooks";
 import { updateSelectedDates } from "@/redux/features/apartmentSlice";
@@ -22,6 +22,7 @@ const DatePickerForm = () => {
   const [selectedStartDate, setSelectedStartDate] = useState<string | null>(
     null
   );
+  const monthsDisplayed = 2;
 
   const handleChange = (ranges: any) => {
     const startDateFormatted = format(ranges.selection.startDate, "MM/dd/yyyy");
@@ -87,7 +88,7 @@ const DatePickerForm = () => {
           ranges={[date]}
           onChange={handleChange}
           minDate={new Date()}
-          months={2}
+          months={monthsDisplayed}
           direction={isMobile ? "vertical" : "horizontal"}
         />
       )}

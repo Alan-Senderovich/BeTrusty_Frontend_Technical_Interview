@@ -8,7 +8,7 @@ export const initialState: IApartmentState = {
   selectedStartDate: null,
   selectedEndDate: null,
   status: "idle",
-  selectedApartment: selectedApartmentMock
+  selectedApartment: selectedApartmentMock,
 };
 
 export const apartmentSlice = createSlice({

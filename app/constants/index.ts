@@ -8,3 +8,6 @@ export const navbarItems: INavbarItem[] = [
   { name: "Key", url: "/" },
   { name: "Notifications", url: "/" },
 ];
+
+export const IMAGE_WIDTH: number = 400;
+export const IMAGE_HEIGHT: number = 300;
