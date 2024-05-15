@@ -1,6 +1,6 @@
-import { NavbarItem } from "@/types";
+import { INavbarItem } from "@/types";
 
-export const navbarItems: NavbarItem[] = [
+export const navbarItems: INavbarItem[] = [
   { name: "Home", url: "/" },
   { name: "Profile", url: "/" },
   { name: "Performance", url: "/" },

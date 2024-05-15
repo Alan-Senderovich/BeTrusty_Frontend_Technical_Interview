@@ -1,4 +1,5 @@
 import Button from "./Button";
-import DatePickerForm from "../DatePickerForm";
+import Modal from "./Modal";
+import Spinner from "./Spinner";
 
-export { Button, DatePickerForm };
+export { Button, Modal, Spinner };

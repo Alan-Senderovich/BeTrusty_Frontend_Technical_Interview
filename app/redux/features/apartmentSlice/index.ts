@@ -30,7 +30,6 @@ export const apartmentSlice = createSlice({
       }
     },
     updateSelectedDates: (state, action) => {
-      console.log("action", action);
       state.selectedStartDate = action.payload.startDateFormatted;
       state.selectedEndDate = action.payload.endDateFormatted;
     },

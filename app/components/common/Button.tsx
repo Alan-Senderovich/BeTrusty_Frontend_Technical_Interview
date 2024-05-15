@@ -18,15 +18,17 @@ const Button = ({
   variant,
 }: ButtonProps) => {
   const colorVariants: ColorVariants = {
-    default:
-      "bg-light-blue w-full rounded-3xl text-primary-blue font-semibold text-lg",
-    secondary: "bg-white w-full rounded-lg text-primary-blue font-semibold text-md hover:bg-slate-400 transition ease-in-out duration-300",
+    default: "btn__default",
+    secondary: "btn__secondary",
   };
 
   const customStyles = variant ? colorVariants[variant] : "";
 
   return (
-    <button onClick={handleClick} className={`custom-btn ${customStyles} ${containerStyles}`}>
+    <button
+      onClick={handleClick}
+      className={`custom-btn ${customStyles} ${containerStyles}`}
+    >
       {children}
     </button>
   );
